@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/shopList.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 头部容器 -->
+  <header id="header-con"></header>
+  <div class="shop-box">
+      <div class="shop-nav">
+          <div class="bloak">
+              <span  class="font"><a href="/index.html">首页</a></span>
+              <img src="../img/pn4.png" class="imga" alt="">
+              <span class="cart-list"> <a href="" >商品列表</a></span>
+          </div>
+        </div> 
+          <div class="cartType">
+              <div class="bg-box">
+                   <div class="brand">
+                       <div class="brand-a">
+                           品牌&nbsp;&nbsp;:
+                       </div>
+                       <ul>
+                           <li><a href="">网易云音乐</a></li>
+                           <li><a href="">MAGICBUS</a></li>
+                           <li><a href="">经典五大唱片</a></li>
+                           <li><a href="">Xingyunshi</a></li>
+                           <li><a href="">银魂</a></li>
+                           <li><a href="">漫威</a></li>
+                           <li><a href="">星球大战</a></li>
+                           <li><a href="">magicbus</a></li>
+                           <li><a href="">网易云音乐</a></li>
+                           <li><a href="">MAGICBUS</a></li>
+                           <li><a href="">经典五大唱片</a></li>
+                           <li><a href="">Xingyunshi</a></li>
+                           <li><a href="">银魂</a></li>
+                           <li><a href="">漫威</a></li>
+                           <li><a href="">星球大战</a></li>
+                           <li><a href="">magicbus</a></li>
+                           <li><a href="">网易云音乐</a></li>
+                           <li><a href="">MAGICBUS</a></li>
+                           <li><a href="">经典五大唱片</a></li>
+                          
+                           
+                       </ul>
+                   </div>
+                   <div class="ip-type">
+                        <div class="type-a">
+                                分类&nbsp;&nbsp;:
+                            </div>
+                        <ul>
+                                <li><a href="">网易云音乐</a></li>
+                                <li><a href="">MAGICBUS</a></li>
+                                <li><a href="">经典五大唱片</a></li>
+                                <li><a href="">Xingyunshi</a></li>
+                                <li><a href="">银魂</a></li>
+                        </ul>
+                   </div>
+                   <div class="cart-price">
+                        <div class="price-a">
+                                价格&nbsp;&nbsp;:
+                            </div>
+                        <ul id="screen">
+                                <li class="numone"><a href="javascript:;">0~860</a></li>
+                                <li class="numtwo"><a href="javascript:;">860~1720</a></li>
+                                <li class="numthree"><a href="javascript:;">1721~2580</a></li>
+                                <li><a href="javascript:;">自定义</a></li>
+                                <li><input type="text">~<input type="text"></li>
+                        </ul>
+                   </div>
+              </div>
+              <div class="goods">
+                    <ul>
+                            <li>
+                                <a href="" class="zh">综合</a>
+                            </li>
+                            <li class="point"></li>
+                            <li>
+                                    <a href="javascript:;" class="price-s" id="asce-order">价格低到高</a>
+                            </li>
+                            <li class="point"></li>
+                            <li>
+                                    <a href="javascript:;" class="price-s" id="desc-order">价格高到低</a>
+                            </li>
+                     </ul>
+                     <div class="cart-details" id="cart-det">
+                     </div>
+                     <script type="text/html" id="cart-shop">
+                        <ul>
+                            {{each list item}}
+                              <li>
+                                  <div>
+                                  <a href="/html/detail.html?id={{item.id}}" class="apn">
+                                      <img src="{{item.img}}" alt="">
+                                  </a>
+                                 
+                                    <a href="/html/detail.html?id={{item.id}}">{{item.title}}</a>
+                                    <p>￥ <span>{{item.price}}</span></p>
+                                  </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+                     </script>
+        
+                     
+                     <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                              <li>
+                                <a href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li>
+                                <a href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </nav>                         
+              </div>
+              <div class="fy">
+
+              </div>
+          </div>
+    
+  </div>
+
+
+   <!-- 尾部容器 -->
+  <div id="footer">
+     
+  </div>
+  <script src="/../lib/requirejs/require.min.js" data-main="/js/shop-list.js"></script>
+</body>
+</html>

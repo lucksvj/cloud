@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 头部容器 -->
+    <header id="header-con"></header>
+    <!-- 小导航 -->
+    <div class="det-box">
+        <div class="shop-nav">
+            <div class="bloak">
+                <span class="font"><a href="/index.html">首页</a></span>
+                <img src="../img/pn4.png" class="imga" alt="">
+                <span class="cart-list"> <a href="">商品详情</a></span>
+            </div>
+        </div>
+        <!-- 图片展示 -->
+        <div class="shop-xq" id="">
+            <div class="picture" id="big-picture">
+              
+            </div>
+            <script type="text/html" id="page">
+                <div class="box-left" >
+                                <div class="d-left">
+                                        <div class="view_bd">
+                                            <img class="zoom-img" src="{{bigimg[0]}}" data-zoom-image="{{bigimg[0]}}"/>
+                                        </div>
+                                        <div class="view_thumbs" id="gal1">
+                                            <ul class="view-ul" id="uls">
+                                                <li class="current">
+                                                        <a href="#" data-image="{{bigimg[1]}}" data-zoom-image="{{bigimg[1]}}">
+                                                            <img class="s" src="{{bigimg[1]}}" alt="">
+                                                        </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-image="{{img[2]}}" 
+                                                     data-zoom-image="{{bigimg[2]}}">
+                                                    <img class="s" src="{{img[2]}}" />
+                                                </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-image="{{img[3]}}" 
+                                                    data-zoom-image="{{bigimg[3]}}">
+                                                    <img class="s" src="{{img[3]}}"/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                        <a href="#" data-image="{{img[4]}}" 
+                                                         data-zoom-image="{{bigimg[4]}}">
+                                                        <img class="s" src="{{img[4]}}"/>
+                                                        </a>
+                                                    </li>
+                                                <li>
+                                                        <a href="#" data-image="{{img[4]}}" 
+                                                         data-zoom-image="{{bigimg[4]}}">
+                                                        <img class="s" src="{{img[4]}}"/>
+                                                        </a>
+                                                    </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                         </div>
+                       </div>    
+        
+        </script>
+            <!-- 文字介绍 -->
+            <div class="show">
+                <div class="show-name">
+                    <h2>皮卡丘卡通行李牌钥匙扣</h2>
+                    <p class="p1">超萌皮卡丘来袭，潮流百搭</p>
+                    <p class="price">
+                        <span class="rmb">￥</span>
+                        <span class="rem">29</span>
+                    </p>
+                    <div class="promtion">
+                            <div class="pro-n">促销:</div>
+                            <ul class="coupon-list">
+                                <li class="list">
+                                    <span class="lable">限时领取</span>
+                                    <span class="volu">包邮券&nbsp;&nbsp;皮卡丘包邮券,</span>
+                                    <span>无门槛</span>
+                                    <span>领劵</span>
+                                    <a href="javascript:;">全部优惠券(2)</a>
+                                    <i class="arr"></i>
+                                </li>
+                                <!-- <li class="lst">
+                                        <span class="lable">限时领取</span>
+                                        <span class="volu">包邮券&nbsp;&nbsp;皮卡丘包邮券,</span>
+                                        <span>无门槛</span>
+                                        <span>领劵</span>
+                                        <a href="javascript:;">全部优惠券(2)</a>
+                                        <i class="arr"></i>
+                                    </li> -->
+                            </ul>
+                        </div>
+                        <div class="box-cor">
+                                <div class="color">
+                                    <span class="pig">颜色:</span>
+                                    <ul class="coloe-yw">
+                                       <li>黄色</li>
+                                       <li>白色</li>
+                                    </ul>
+                                </div>
+                                <div class="des">
+                                    <div class="title">款式:</div>
+                                     <ul class="logo-a">
+                                         <li>logo款</li>
+                                     </ul>
+                                </div>
+                                <div class="num">
+                                    <div class="shop-num">数量:</div>
+                                    <div class="count">
+                                        <a href="javascript:;" class="reduce" id="reduce">-</a>
+                                        <span class="inBox">
+                                            <input type="text" id="shop-num" value="1">
+                                        </span>
+                                        <a href="javascript:;" class="reduce" id="pusl">+</a>
+                                    </div>
+                                </div>  
+                            </div>
+                            
+                </div>
+                <div class="sevre">
+                    <p>服务:</p>
+                    <div class="showsever">
+                        <a href="javascript:;">不支持7天无理由退货</a>
+                        <a href="javascript:;">商家发货</a>
+                        <a href="javascript:;">网易自营</a>
+                    </div>
+                </div>
+                <p class="goshop">
+                    <a href="javascript:;" class="gocart">立即购买</a>
+                    <a href="javascript:;" class="addcart">加入购物车</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="side-l"></div>
+    <!-- 尾部容器 -->
+    <div id="footer">
+    </div>
+
+    <script src="/../lib/requirejs/require.min.js" data-main="/js/detail.js"></script>
+</body>
+
+</html>

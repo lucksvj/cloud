@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/lib/swiper/css/swiper.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 头部容器 -->
+  <header id="header-con"></header>
+  <!-- 轮播图 -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div id="one" class="swiper-slide imga"><img src="/img/109951164017921266.jpg"></div>
+      <div id="two" class="swiper-slide imga"><img src="/img/109951164017538982.jpg"></div>
+      <div class="swiper-slide imga"><img src="/img/109951164019924839.jpg"></div>
+      <div class="swiper-slide imga"><img src="/img/109951164017803908.jpg"></div>
+      <div class="swiper-slide imga"><img src="/img/109951164017817893.jpg"></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+
+    <!-- 如果需要滚动条 -->
+    <!-- <div class="swiper-scrollbar"></div> -->
+  </div>
+  <!-- 轮播图 底部导航 -->
+  <div class="tab">
+    <ul>
+      <li>
+        <a href="/html/shop-list.html">
+          <img src="/img/d1.jpg" alt="">
+          <span>数码影印</span>
+        </a>
+      </li>
+      <li>
+        <a href="/html/shop-list.html">
+          <img src="/img/d2.jpg" alt="">
+          <span>IP周边</span>
+        </a>
+      </li>
+      <li>
+        <a href="/html/shop-list.html">
+          <img src="/img/d3.jpg" alt="">
+          <span>热销爆品</span>
+        </a>
+      </li>
+      <li>
+        <a href="/html/shop-list.html">
+          <img src="/img/d1.jpg" alt="">
+          <span>积分商城</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="box-g">
+    <div class="box-a"></div>
+    <div class="youth">
+      <a href="" class="one">
+        <img src="/img/src.jpg" alt="">
+      </a>
+      <a href="" class="two">
+        <img src="/img/src1.jpg" alt="">
+      </a>
+    </div>
+    <div class="sell">
+      <b>编辑推荐</b>
+      <div class="well" id="well">
+
+      <script type="text/html" id="sell-shop">
+          <ul>
+              {{each list item}}
+             <li >
+                    <div>
+                     <a href="/html/detail.html?id={{item.id}}" class="shop-v"> 
+                      <img src="{{item.img}}" alt=""></a> 
+                      <a href="/html/detail.html?id={{item.id}}">{{item.title}}</a>
+                      <p>￥ <span>{{item.price}}</span></p>
+                    </div>
+             
+                  </li>
+              
+              {{/each}}
+          </ul>
+       </script>
+        
+      </div>
+    </div>
+
+  </div>
+    <div id="side-l"></div>
+   <div id="footer"></div>
+  <script src="/lib/requirejs/require.js" data-main="/js/index.js"></script>
+</body>
+
+</html>

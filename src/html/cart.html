@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/cart.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 头部容器 -->
+    <header id="header-con"></header>
+
+    <!-- 购物车 -->
+    <div class="g-db">
+        <div class="m-bread">
+            <span>购物车</span>
+        </div>
+
+        <div class="cart-n">
+            <div class="head">
+                <div class="check">
+                    <input type="checkbox" name="" id="checka"></div>
+                <div class="fn-head">
+                    <div class="fn-f1 ">全选</div>
+                    <div class="fn-f2 fn">商品</div>
+                    <div class="fn-f3  fn">金额</div>
+                    <div class="fn-f4  fn">数量</div>
+                    <div class="fn-f5  fn">小计</div>
+                    <div class="fn-f6  fn">操作</div>
+                </div>
+            </div>
+            <ul>
+                <li class="mian-h">
+                    <div class="mian-left">
+                        全部商品 <span>(1)</span>
+                    </div>
+                    <div class="mian-right">
+                        全场满<span></span>免运费还差1元<a href="/index.html">去凑单 ></a>
+                    </div>
+                </li>
+                <div class="mian-m" id="mian-m">
+
+                </div>
+
+                <li class="bottom">
+                    <div class="shop-num">
+                        <div class="">已选则<span id="shoping"></span>件商品 </div>
+                    </div>
+                    <div class="api">合计:<span id="shop-price"></span></div>
+                    <div class="js-shop">结算</div>
+                </li>
+            </ul>
+        </div>
+        <div class="cart-back">
+            <div class="empty">
+                <span class="phot"></span>
+                <P>购物车还是空的 ,<a href="/html/shop-list.html">去逛逛</a></P>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="shop-sp">
+        {{each list item}}
+        <li  class="shop-list-a" >
+        <div class="mian-fn">
+            <input type="checkbox" class="checked">
+        </div>
+        <div class="mian-box">
+            <div class="img">
+                <img src="{{item.img[0]}}">
+            </div>
+            <div class="title">
+                 <a href="/html/detail.html" data-id="{{item.id}}">{{item.title}}</a>
+                 <p>白色</p>
+            </div>
+            <div class="price">￥<span>{{item.price}}</span></div>
+            <div class="num">
+              <div class="number">
+                  <a href="javascript:;" class="down">-</a>
+                   <span class="tot">
+                    <input type="text" value="1" class="shopNum">
+                   </span>
+                   <a href="javascript:;" class="btn">+</a>
+              </div>
+            </div>
+            <div class="z-price">{{item.price*item.num}}</div>
+            <div class="delete">x</div>
+        </div>
+    </li>
+        {{/each}}
+    </script>
+    <!-- 尾部容器 -->
+    <div id="footer">
+    </div>
+    <script src="/../lib/requirejs/require.min.js" data-main="/js/cart.js"></script>
+</body>
+
+</html>

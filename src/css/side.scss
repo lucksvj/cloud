@@ -1,0 +1,54 @@
+@import "style";
+
+.m-warp{
+    width: 62px;
+    height: auto;
+    position: fixed;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    // background:#ccc;
+    right: 100px;
+    top:630px;
+    .m-item{
+     width: 60px;
+     height: 58px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
+    .shop-t{  display: block;
+        margin: 0 auto;
+        width: 30px;
+        height: 30px;
+        background: url(../img/d3.jpg) no-repeat center;
+        background-size: 100%
+
+    }
+    .shop-a{  display: block;
+        margin: 0 auto;
+        width: 30px;
+        height: 30px;
+        background: url(../img/d1.jpg) no-repeat center;
+        background-size: 100%
+
+    }
+    b{
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: #f00;
+        position: absolute;
+        right: 17px;
+        border-radius: 50%;
+        font-size: 12px;
+        text-align: center;
+    }
+    span{
+        font-size: 14px;
+    text-align:center;
+    display: block;
+    margin-top: 13px;
+    color: #666666;
+
+    }
+    .shop{
+        margin-top: 3px;
+    }
+    }
+}
