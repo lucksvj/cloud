@@ -1,6 +1,6 @@
 require(["require.config"], function () {
-    require(["jquery", "swiper","url"], function ($, swiper,url) {
-        class Wheel {
+    require(["jquery", "swiper","url","cookie"], function ($, swiper,url) {
+        class Login {
             constructor() {
                 this.paint();
             }
@@ -46,11 +46,12 @@ require(["require.config"], function () {
                         if ($(this).attr("id") === "agrea") {
                             $(this).css("display", "none")
                             _this.agbox.css("display", "block");
-                            console.log($(this))
+                              
                         } else if (_this.agbox.css("display") === "block") {
                             if ($(this).attr("id") === "agbos") {
                                 $(this).css("display", "none")
                                 _this.agree.css("display", "block");
+                                
                             }
                         }
 
@@ -59,22 +60,20 @@ require(["require.config"], function () {
 
             }
             regis(){
-                
-                
                 this.resiser.on("click", () => {
-                    let username =$(".qqname").val();
+                  let username =$(".qqname").val();
                     let password=$(".password").val();  
-                 
-                    if (this.agbox.css("display") === "block") {
                        $.ajax({
-                           url: url.phpbaseUrl+"register.php",
+                           url: url.phpbaseUrl+"login.php",
                            type:"post",
                            data: {username,password},
                            success:res=>{
                                console.log(res)
                                if (res.res_code ==1) {
-                                   alert(res.res_message+"即将跳转登陆页面");
-                                   location.href="login.html"
+                                   alert(res.res_message+"即将跳转首页");
+                                   $.cookie("username",username,{path:"/"}).
+                                   location.href="index.html"
+                                   
                                }else{
                                    console.log(123)
                                }
@@ -82,11 +81,11 @@ require(["require.config"], function () {
                            dataType: "json"
                        })
 
-                    }
+                
                 })
 
             }
         }
-        new Wheel();
+        new Login();
     })
 })

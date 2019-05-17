@@ -9,8 +9,8 @@ require.config({
         "footer":"js/module/footer",
         "zoom":"lib/jquery-plugins/jquery.elevateZoom-3.0.8.min",
         "side":"js/module/side",
-        "fly":"lib/jquery-plugins/jquery.fly"
-
+        "fly":"lib/jquery-plugins/jquery.fly",
+        "cookie":"lib/jquery-plugins/jquery.cookie"
     },
    shim :{
        zoom:{
@@ -18,6 +18,9 @@ require.config({
        },
        fly:{
            deps :["jquery"]
+       },
+       cookie:{
+           deps: ["jquery"]
        }
    }
 

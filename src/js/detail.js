@@ -50,23 +50,23 @@ require(["require.config"], () => {
             // 添加数量
             addshop() {
                 
-                this.shopNum = Number($("#shop-num").val());
-                console.log($("#shop-num"))
-                let _this = this;
+                this.shopnum = Number($("#shop-num").val());
+                console.log(  this.shopnum)
+               let _this = this;
                 
                 $(".count").on("click", "a", function () {
                  
                     if ($(this).attr("id") === "pusl") {
-                        let Num = ++_this.shopNum;
-                        console.log( _this.shopNum)
+                        let Num = ++_this.shopnum;
+                        console.log( Num)
                         $("#shop-num").val(Num);
                     }else if($(this).attr("id")==="reduce"){
                          
-                         if(_this.shopNum <2){
-                            _this.shopNum=2;
+                         if(_this.shopnum <2){
+                            _this.shopnum=2;
                          } 
-                         _this.shopNum--;
-                        $("#shop-num").val(_this.shopNum);
+                         _this.shopnum--;
+                        $("#shop-num").val(_this.shopnum);
                          
                       }
 
@@ -76,7 +76,7 @@ require(["require.config"], () => {
             addCart() {
                 let _this=this;
                 let shopNum = Number($("#shop-num").val());
-                console.log($("#side-l"))
+                console.log(shopNum)
                 $(".addcart").on("click", (e) => {
                     
                     $(`<img src='${_this.data.detail.bigimg[0]}' style='width:30px;height:30px'>`).fly({
@@ -98,6 +98,7 @@ require(["require.config"], () => {
                     
         
                     let shopNum = Number($("#shop-num").val());
+                    console.log(shopNum)
 
                     let cart = localStorage.getItem("cart");
 

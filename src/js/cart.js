@@ -3,165 +3,202 @@ require(["require.config"], () => {
         class Cart {
             constructor() {
                 this.init();
-                this.shopid();
-                this.cartNum();
+                // this.cartNum();
                 this.cartPrice();
                 this.delet();
-                this.dis();
+
                 this.allche();
                 this.addnum();
-               
             }
             init() {
-               let shopcart = JSON.parse(localStorage.getItem("cart"));
-                // console.log(this.shopcart)
-                this.renod(shopcart)
+                this.shopcart = JSON.parse(localStorage.getItem("cart"));
+                console.log()
+                this.renod(this.shopcart)
+                if ( this.shopcart.length != 0 && this.shopcart != []) {
+
+                    $(".cart-n").css("display", "block");
+                    $(".cart-back").css("display", "none")
+
+                } else {
+
+                    $(".cart-n").css("display", "none");
+                    $(".cart-back").css("display", "block")
+                }
+              //  $("#shop-price").html(price);
             }
             renod(list) {
                 $("#mian-m").html(template("shop-sp", { list }));
-               
+
+                this.dis();
             }
-            dis(){
-                if(this.shopcart){
-                    $(".cart-n").css("display","block");
-                    $(".cart-back").css("display","none")
-                }else{
-                    $(".cart-n").css("display","none");
-                    $(".cart-back").css("display","block")
-                }
+            // 判断购物车是否显示
+            dis() {
+                console.log()
+
             }
-            shopid() {
-                // 获取localstorage 的id
-                this.a = [];
-                let cart = JSON.parse(localStorage.getItem("cart"))
-                if (cart) {
-                    cart.forEach(element => {
-                        console.log(element)
-                        this.a.push(element.id);
-                    });
-                }
-            }
+
             // 购物车加减
             addnum() {
                 let _this = this;
                 $("#mian-m").on("click", "a", function () {
+                    // 获取到当前点击的id
                     let caoord = Number($(this).parents(".num").siblings(".title").find("a").attr("data-id"));
-                    let shopId = _this.a;
-                
-                    this.shopNum = Number($(this).siblings(".shopNum").val());
-                    console.log()
+                    //获取到小计
+                    let price = $(this).parents(".num").siblings(".z-price");
+                    //获取到当前的数量
+                    this.shopNum = $(this).siblings(".tot").find(".shopNum").val();
+                    //获取localStorage的数据
                     let cart = JSON.parse(localStorage.getItem("cart"))
+                    //判断当前的点击的class 是否是减
                     if ($(this).attr("class") === "down") {
-                        if (this.shopNum < 2) {
-                            this.shopNum = 2;
-                        }
+                        //数量减
                         this.shopNum--;
-                        $(this).siblings(".shopNum").val(this.shopNum)
-                        shopId.forEach((element, index) => {
-                            console.log(element)
-                            if (element.id == caoord.id) {
-                                let scart = JSON.parse(localStorage.getItem("cart"));
-                                scart.forEach(index => {
-                                    console.log(index)
-                                    index.num = this.shopNum;
-                                })
-                                localStorage.setItem("cart", JSON.stringify(scart))
-                            }
-                        })
+                        //用来接收cart下的下标
+                        let index = -1;
+                        // 用some 判断cart的id与当前id是否相等;
+                        //相等则返回true 
+                        if (cart.some(function (item, i) {
+                            index = i;
+                            return item.id == caoord
+                        })) {
+                            //相同下标的的数量减；
+                            cart[index].num--;
+                            //判断数量是否小于1 小于1的话 则等于1
+                            cart[index].num = cart[index].num < 1 ? 1 : cart[index].num
+                        }
+                        //渲染到页面上
+                        $(this).siblings(".tot").find(".shopNum").val(cart[index].num)
+                        //进行转换
+                        localStorage.setItem("cart", JSON.stringify(cart))
+                            // _this.cartNum();
+                            // _this.cartPrice();
+                        _this.Subtotal(caoord, price, cart)
                     } else if ($(this).attr("class") === "btn") {
                         this.shopNum++;
-                        $(this).siblings(".shopNum").val(this.shopNum)
+                        $(this).siblings(".tot").find(".shopNum").val(this.shopNum)
 
-                        shopId.forEach((element, index) => {
-                            console.log(element == caoord)
-                            if (element == caoord) {
-                                let scart = JSON.parse(localStorage.getItem("cart"));
-                                 console.log(scart)
-                                scart.forEach(index => {
-                                    console.log(index)
-                                    index.num = this.shopNum;
-                                })
-                             localStorage.setItem("cart", JSON.stringify(scart))
-                            }
-                        })
+                        let index = -1;
+                        // 获取到购物车
+                        let scart = JSON.parse(localStorage.getItem("cart"));
+
+                        if (scart.some(function (item, i) {
+                            // index等于i  把i的值赋给index
+                            console.log(i)
+                            index = i;
+                            // 把相等的id 返回出去；
+                            return item.id == caoord
+                        })) {
+                            // 判断等于true 的话相同下标的数量加
+                            scart[index].num++
+                        }
+                        localStorage.setItem("cart", JSON.stringify(scart))
+                        // _this.cartNum();
+                        // _this.cartPrice();
+                        _this.Subtotal(caoord, price, scart)
                     }
-                    _this.cartNum();
-                    _this.cartPrice();
+
                 })
             }
             // 总数量
-            cartNum() {
-                let cart = JSON.parse(localStorage.getItem("cart"))
-                let num = 0;
-                if (cart) {
-                    num = cart.reduce((n, shop) => {
-                        n += shop.num;
-                        return n;
-                    }, 0);
-                }
+            // cartNum() {
+            //     let cart = JSON.parse(localStorage.getItem("cart"))
+            //     let num = 0;
+            //     if (cart) {
+            //         num = cart.reduce((n, shop) => {
+            //             n += shop.num;
+            //             return n;
+            //         }, 0);
+            //     }
 
-                $("#shoping").text(num);
-            }
+            //     $("#shoping").text(num);
+            // }
             //总价
             cartPrice() {
+                console.log(1)
                 let cart = JSON.parse(localStorage.getItem("cart"))
                 let price = 0;
-                if (cart) {
-                    price = cart.reduce((n, shop) => {
-                        n += shop.num * shop.price;
-                        return n;
-                    }, 0);
-                }
-
-                $("#shop-price").html(price);
+                $(".checked").each(function(item,index){
+                    
+                  if (index.checked){
+                    price+=Number( $(index).parents(".shop-list-a").find(".z-price").html());
+                   
+                  }
+                })
+                $("#shop-price").html(price)
+               
+             
             }
-
-            delet(){
-                this.list=$(".shop-list-a");
-                console.log(this.list)
-                let _this=this;
-                $("#mian-m").on("click","div",function(){
-
-                    if($(this).attr("class") === "delete"){
-                        let listLI=$(this).parents(".shop-list-a");
+            //  删除
+            delet() {
+                this.list = $(".shop-list-a");
+                let _this = this;
+                $("#mian-m").on("click", "div", function () {
+                    if ($(this).attr("class") === "delete") {
+                        let listLI = $(this).parents(".shop-list-a");
                         listLI.remove();
-                        var data=JSON.parse(localStorage.getItem("cart"));  
-                        data.some((element,index)=>{
-                              this.index=index;
-                              return element.id=this.id
-                          })
-                          data.splice(this.index,1)//删除
-                          //data从新插入到缓存
-                          localStorage.setItem("cart",JSON.stringify(data));
-                         if(localStorage.getItem("key")===null){
-              
-                        //   this.calcMoney();
-                          $('#chebox')[0].checked=false;
-                         }
+                        var data = JSON.parse(localStorage.getItem("cart"));
+                        data.some((element, index) => {
+                            this.index = index;
+                            return element.id = this.id
+                        })
+                        data.splice(this.index, 1)//删除
+                        //data从新插入到缓存
+                        localStorage.setItem("cart", JSON.stringify(data));
+                        // if (localStorage.getItem("key") === null) {
+                        //     $('#chebox')[0].checked = false;
+                        // }
                     }
+                    // _this.cartNum();
+                    _this.cartPrice();
                 })
             }
-           allche(){
-               $(".checked").on("click",()=>{
-                   //查找checked 的下标
-                   let len=$(".checked").length;
-                   //总的数
-                   let lnum=0;
-                   //遍历 判断状态
-                 $(".checked").each((index,item)=>{
-                     if(item.checked) lnum++;
+            // 单选
+            allche() {
+                let _this=this
+                $(".checked").on("click", () => {
+                    //查找checked 的下标
+                    let len = $(".checked").length;
+                    //创建一空容器
+                    let lnum = 0;
+                    //遍历判断状态
+                    $(".checked").each((index, item) => {
+                        if (item.checked) lnum++;
+                    })
+                    
+                    var checked = len === lnum ? true : false;
+                    $('#checka')[0].checked = checked;
+                    $("#shoping").html(lnum);
+                    _this.cartPrice()
+                     
                 })
-                var checked = len ===lnum? true:false;
-                $('#checka')[0].checked = checked ;
-               })
-               $('#checka').on("click",()=>{
-                // let len=$(".checked").length;
-                $(".checked").each((index,item)=>{
-                    item.checked=$('#checka')[0].checked ;
+                //全选
+                $('#checka').on("click", () => {
+                    // let len=$(".checked").length;
+                    $(".checked").each((index, item) => {
+                        item.checked = $('#checka')[0].checked;
+                    })
+               
+
                 })
-                
-               })
-           }
+            }
+            // 计算小计
+            Subtotal(id, price, cart) {
+
+                let index;
+                if (cart.some(function (item, i) {
+                    index = i;
+                    return item.id == id;
+                })) {
+                    console.log(1)
+                    cart[index].num * cart[index].price;
+                    price.html(cart[index].num * cart[index].price)
+                    console.log(price)
+                }
+            }
+            //选中事件
+            selection(){
+                 
+            }
         }
         new Cart();
     })

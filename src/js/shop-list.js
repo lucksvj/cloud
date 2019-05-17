@@ -3,7 +3,8 @@ require(["require.config"], function () {
         class Shoplist {
             constructor() {
                 console.log(123);
-                this.shopdata().then((list) => {
+                this.shopdata().then((l) => {
+                    let list=l;
                     this.ascend(list);
                     this.descen(list);
                     this.screen(list);
@@ -34,6 +35,9 @@ require(["require.config"], function () {
                 })
 
             }
+            rende(){
+
+            }
             // 升序
             ascend(list) {
                 this.list = list;
@@ -59,21 +63,27 @@ require(["require.config"], function () {
                     $("#cart-det").html(Tat);
                 })
             }
-            screen(list) {
-                this.list = list;
+            screen(l) {
+                // this.list = list;
                 var _this = this;
                 $("#screen").on("click", "a", function () {
-               
-                    let val = this.innerHTML;
-                     this.priceNum = val.split("~");
-                  let shop=   _this.list.filter(list => {
-                       
-                         return  list.price > this.priceNum[0] && list.price < this.priceNum[1];
+                     let val = $(this).html();
+                    //  let list=_this.list; 
+                    let priceNum = val.split("~");    
+                    let shop =[];
+                   shop= l.filter(ll => {
+                    //   console.log(ll)
+                         return  ll.price > priceNum[0] &&  ll.price <priceNum[1];
                     })
-                    let Tat = template("cart-shop", { list:shop })
-                    $("#cart-det").html(Tat);
+                  
+                    console.log(shop)     
+                    let cartlist = template("cart-shop", { list:shop })
+
+                    // console.log(Tat)
+                    $("#cart-det").html(cartlist );
                     _this.descen(shop);
-                    _this.screen(shop);
+                    _this.ascend(shop);
+                    // _this.shopdata(shop)
                 })
             }
         }
